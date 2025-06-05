@@ -1,12 +1,12 @@
-```markdown
+markdown
 # 💼 SaaSquatch-Inspired Lead Generation Tool
 
 A clean, creative, and powerful lead generation web app built using **Flask** — designed to help users search, filter, enrich, and download company leads based on industry, location, employee count, and revenue. 
 
 🚀 **Inspired by SaaSquatch Leads**, reimagined with original features and smart design to showcase technical skills, UX thinking, and web development talent.
-
+```
 ---
-
+```
 ## ✨ Features
 
 - 🔍 **Lead Generator Page**
@@ -28,12 +28,12 @@ A clean, creative, and powerful lead generation web app built using **Flask** �
 | Frontend     | Backend | Data           | Styling      |
 |--------------|---------|----------------|--------------|
 | HTML, CSS    | Flask   | Mocked Data (Pandas) | Bootstrap 5 |
-
+```
 ---
-
+```
 ## 📂 Folder Structure
 
-```
+
 
 leadgen-flask-app/
 │
@@ -49,13 +49,13 @@ leadgen-flask-app/
 ├── README.md                 # Project overview
 └── rationale.pdf             # Project rationale document
 
-````
-
+```
+```
 ---
 
 ## 📦 Installation
 
-```bash
+bash
 # 1. Clone the repository
 git clone https://github.com/your-username/leadgen-flask-app.git
 cd leadgen-flask-app
@@ -69,7 +69,8 @@ pip install -r requirements.txt
 
 # 4. Run the app
 python app.py
-````
+```
+```
 
 ---
 
@@ -109,6 +110,3 @@ Passionate about creating smart solutions that make life easier for teams and co
 
 ```
 
----
-
-```
