@@ -47,7 +47,7 @@ leadgen-flask-app/
 └── rationale.pdf # Project rationale document
 
 
-
+```
 ---
 
 ## 📦 Installation
