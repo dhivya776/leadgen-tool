@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LeadGen Pro - Find Your Next Client</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      margin: 0; 
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    header {
+      max-width: 960px;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin: 8px 0 0 0;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #b0c4de;
+    }
+    main {
+      background: #ffffff;
+      color: #222;
+      border-radius: 12px;
+      max-width: 960px;
+      width: 100%;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    label {
+      flex: 1 1 220px;
+      display: flex;
+      flex-direction: column;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      color: #555;
+    }
+    input[type="text"],
+    select,
+    input[type="number"] {
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1.8px solid #ddd;
+      font-size: 1rem;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    select:focus,
+    input[type="number"]:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 6px #2a5298aa;
+    }
+    .full-width {
+      flex-basis: 100%;
+    }
+    button {
+      background: #1e3c72;
+      color: white;
+      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      flex-basis: 100%;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #15315a;
+    }
+    .results {
+      margin-top: 30px;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #f7f7f7;
+      font-weight: 600;
+    }
+    tr:hover {
+      background-color: #f0f8ff;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #a0a0a0;
+      text-align: center;
+      width: 100%;
+      max-width: 960px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav style="margin-bottom: 30px;">
+      <a href="/" style="color:#f0f4f8; margin-right: 20px; text-decoration:none; font-weight:600;">Home</a>
+      <a href="/documentation" style="color:#f0f4f8; margin-right: 20px; text-decoration:none; font-weight:600;">Documentation</a>
+      <a href="/contact" style="color:#f0f4f8; text-decoration:none; font-weight:600;">Contact</a>
+    </nav>
+    <h1>LeadGen Pro</h1>
+    <p>Find your next client faster & smarter</p>
+  </header>
+  <main>
+    <form id="leadForm">
+      <label>
+        Industry
+        <input type="text" id="industry" placeholder="e.g. Software, Healthcare" required />
+      </label>
+      <label>
+        Location
+        <input type="text" id="location" placeholder="e.g. New York, NY" required />
+      </label>
+      <label>
+        Min Employees
+        <input type="number" id="empMin" min="0" value="0" />
+      </label>
+      <label>
+        Max Employees
+        <input type="number" id="empMax" min="0" value="1000" />
+      </label>
+      <label>
+        Min Revenue ($M)
+        <input type="number" id="revMin" min="0" value="0" step="0.1" />
+      </label>
+      <label>
+        Max Revenue ($M)
+        <input type="number" id="revMax" min="0" value="500" step="0.1" />
+      </label>
+      <button type="submit">Find Companies</button>
+    </form>
+    <div class="results" id="results"></div>
+  </main>
+  <div class="footer">© 2025 LeadGen Pro • Powered by Dhivya Venkatesan</div>
+
+  <script>
+    const form = document.getElementById('leadForm');
+    const results = document.getElementById('results');
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+
+      const industry = document.getElementById('industry').value.trim();
+      const location = document.getElementById('location').value.trim();
+      const empMin = document.getElementById('empMin').value;
+      const empMax = document.getElementById('empMax').value;
+      const revMin = document.getElementById('revMin').value;
+      const revMax = document.getElementById('revMax').value;
+
+      const payload = { industry, location, empMin, empMax, revMin, revMax };
+
+      results.innerHTML = "<p>Loading results...</p>";
+
+      try {
+        const response = await fetch('/search', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await response.json();
+
+        if (data.length === 0) {
+          results.innerHTML = "<p>No companies found with these filters.</p>";
+          return;
+        }
+
+        let table = `<table>
+          <thead><tr>
+            <th>Company</th><th>Industry</th><th>Location</th><th>Employees</th><th>Revenue ($M)</th><th>Contact</th>
+          </tr></thead><tbody>`;
+
+        data.forEach(c => {
+          table += `<tr>
+            <td>${c.Company}</td>
+            <td>${c.Industry}</td>
+            <td>${c.Location}</td>
+            <td>${c.Employees}</td>
+            <td>${c.Revenue}</td>
+            <td><a href="mailto:${c.Email}">${c.Email}</a></td>
+          </tr>`;
+        });
+
+        table += "</tbody></table>";
+        results.innerHTML = table;
+
+      } catch (err) {
+        results.innerHTML = "<p>Error loading results. Try again.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

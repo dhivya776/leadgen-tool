@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LeadGen Pro - Contact</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+    body {
+      margin: 0; 
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+    
+    main {
+      background: #ffffff;
+      color: #222;
+      border-radius: 12px;
+      max-width: 960px;
+      width: 100%;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    header {
+      max-width: 960px;
+      width: 100%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    header p {
+      margin: 8px 0 0 0;
+      font-weight: 400;
+      font-size: 1.2rem;
+      color: #b0c4de;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+    }
+    h1 {
+      margin: 0;
+      font-weight: 600;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1.5px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: vertical;
+      margin-bottom: 20px;
+    }
+    button {
+      background: #1e3c72;
+      color: white;
+      font-weight: 700;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #15315a;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav style="margin-bottom: 30px;">
+      <a href="/" style="color:#f0f4f8; margin-right: 20px; text-decoration:none; font-weight:600;">Home</a>
+      <a href="/documentation" style="color:#f0f4f8; margin-right: 20px; text-decoration:none; font-weight:600;">Documentation</a>
+      <a href="/contact" style="color:#f0f4f8; text-decoration:none; font-weight:600;">Contact</a>
+    </nav>
+    <h1>LeadGen Pro</h1>
+    <p>Find your next client faster & smarter</p>
+  </header>
+  <main>
+    <h1>Contact Us</h1>
+    <p>Have questions or want to get in touch? Use the form below!</p>
+    <form action="mailto:your.email@example.com" method="post" enctype="text/plain">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </main>
+</body>
+</html>
