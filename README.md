@@ -46,9 +46,7 @@ leadgen-flask-app/
 ├── README.md # Project overview
 └── rationale.pdf # Project rationale document
 
-yaml
-Copy
-Edit
+
 
 ---
 
