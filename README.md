@@ -86,10 +86,10 @@ Showcase technical and design thinking skills
 Deliver a usable and elegant product
 
 Stand out from generic scraping tools
----
+
 📄 License
 This project is built for educational and demo purposes.
----
+
 🙋‍♀️ About the Developer
 Dhivyalakshmi V
 Final Year B.Tech CSE (AIML)
