@@ -31,7 +31,7 @@ A clean, creative, and powerful lead generation web app built using **Flask** �
 ---
 
 ## 📂 Folder Structure
-
+```bash
 leadgen-flask-app/
 │
 ├── static/
